@@ -1,5 +1,4 @@
 (define (my-sqrt x)
-  (define (dist-to-sqrt guess x) (abs (- (* guess guess) x)))
   (define (good-enough? guess x prev)
     (and (< (abs (- (square guess) x)) 0.001)) ( < ( / (abs (- prev guess)) guess) 0.0005))
   (define (average x y) ( / (+ x y) 2))

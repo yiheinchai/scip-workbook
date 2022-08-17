@@ -1,0 +1,8 @@
+(define (cube-root x)
+  (define (good-enough? guess x prev)
+    (and (< (abs (- (* guess guess guess) x)) 0.001)) ( < ( / (abs (- prev guess)) guess) 0.05))
+  (define (improve guess x) ( / (+ ( / x (* guess guess)) (* 2 guess)) 3))
+  (define (rt-it guess x prev)
+	(if (good-enough? guess x prev) guess (rt-it (improve guess x) x guess)))
+  (rt-it 1.0 x 5.0)
+)
