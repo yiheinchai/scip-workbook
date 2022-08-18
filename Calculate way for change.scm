@@ -11,3 +11,9 @@
     (call-when-larger amount 1))
   )
    ; this takes into account the sequence of giving coins
+
+
+
+((define (count-iter amount kinds-of-coins) (
+  + (count-iter amount ( - kinds-of-coins 1)) (count-iter ( - amount d) kinds-of-coins)
+  )))
