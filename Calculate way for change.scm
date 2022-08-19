@@ -14,6 +14,23 @@
 
 
 
-((define (count-iter amount kinds-of-coins) (
-  + (count-iter amount ( - kinds-of-coins 1)) (count-iter ( - amount d) kinds-of-coins)
-  )))
+(define (count-change amount)
+  (define (count-iter amount kinds-of-coins) 
+    (define (get-first-coin kinds) (cond 
+      ((= kinds 5) 50 )
+      ((= kinds 4) 25 )
+      ((= kinds 3) 10 )
+      ((= kinds 2) 5  )
+      ((= kinds 1) 1  )))
+    (define (continue-iter)
+      (+ (count-iter amount ( - kinds-of-coins 1)) (count-iter ( - amount (get-first-coin kinds-of-coins)) kinds-of-coins))
+    )
+    (cond 
+      ((= amount 0) 1) 
+      ((< amount 0) 0) 
+      ((= kinds-of-coins 0) 0) 
+      (else (continue-iter)))
+    )
+  (count-iter amount 5)
+)
+
