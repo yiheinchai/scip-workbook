@@ -1,0 +1,12 @@
+(define (mul base times)
+  (define (mul-iter base times a)
+    (define (double a) (* 2 a))
+    (define (half a) (/ a 2))
+    (cond
+      ((= times 1) (+ base a))
+      ((= (remainder times 2) 0) (mul-iter (double base) (half times) a))
+      (else (mul-iter base (- times 1) (+ a base)))
+    )
+  )
+  (mul-iter base times 0)
+)
